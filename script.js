@@ -22,7 +22,7 @@ document.getElementById("t1-msg").innerHTML = "Hello, World!";
 window.addEventListener("DOMContentLoaded", function () {
   const msg = document.getElementById("t1-msg");
   if (msg) {
-    msg.innerHTML = "Hello, World!";
+    msg.textContent = "Hello, World!";
   }
 });
 /*  

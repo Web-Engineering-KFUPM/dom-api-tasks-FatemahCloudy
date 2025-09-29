@@ -44,15 +44,15 @@ button.addEventListener("click", function () {
     // change text here
 });
 */
-const btn2 = document.getElementById("t2-btn");
-if (btn2) {
-  btn2.addEventListener("click", function () {
-    const status = document.getElementById("t2-status");
-    if (status) {
-      status.innerHTML = "You clicked the button!";
-    }
-  });
-}
+  const btn2 = document.getElementById("t2-btn");
+  const status = document.getElementById("t2-status");
+  if (btn2 && status) {
+    btn2.addEventListener("click", () => {
+      status.textContent = "You clicked the button!";
+    });
+  } else {
+    console.warn("t2-btn or t2-status not found", { btn2, status });
+  }
 /*  
 =======================================
 TODO3: Inspiring Quote Board

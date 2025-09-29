@@ -46,13 +46,9 @@ button.addEventListener("click", function () {
 */
   const btn2 = document.getElementById("t2-btn");
   const status = document.getElementById("t2-status");
-  if (btn2 && status) {
-    btn2.addEventListener("click", () => {
-      status.textContent = "You clicked the button!";
-    });
-  } else {
-    console.warn("t2-btn or t2-status not found", { btn2, status });
-  }
+  btn2.addEventListener("click", () => {
+  status.textContent = "You clicked the button!";
+  });
 /*  
 =======================================
 TODO3: Inspiring Quote Board

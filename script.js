@@ -44,8 +44,15 @@ button.addEventListener("click", function () {
     // change text here
 });
 */
- 
-
+const btn2 = document.getElementById("t2-btn");
+if (btn2) {
+  btn2.addEventListener("click", function () {
+    const status = document.getElementById("t2-status");
+    if (status) {
+      status.innerHTML = "You clicked the button!";
+    }
+  });
+}
 /*  
 =======================================
 TODO3: Inspiring Quote Board

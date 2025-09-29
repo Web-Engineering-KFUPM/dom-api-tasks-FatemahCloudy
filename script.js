@@ -19,8 +19,12 @@ inside the <p> element with id="t1-msg".
 💡 Hint:
 document.getElementById("t1-msg").innerHTML = "Hello, World!";
 */
- 
-
+window.addEventListener("DOMContentLoaded", function () {
+  const msg = document.getElementById("t1-msg");
+  if (msg) {
+    msg.innerHTML = "Hello, World!";
+  }
+});
 /*  
 =======================================
 TODO2: Interaction Corner

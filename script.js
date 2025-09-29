@@ -117,3 +117,40 @@ data.main.temp      → temperature (°C)
 data.main.humidity  → humidity (%)
 data.wind.speed     → wind speed (m/s)
 */
+const btn4 = document.getElementById("t4-loadWx");
+  const t4err = document.getElementById("t4-err");
+  if (btn4) {
+    btn4.addEventListener("click", async () => {
+      const apiKey = "9c29da5738fd8cdd561179419142d7";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=Dammam&units=metric&appid=${apiKey}`;
+      const tempEl = document.getElementById("t4-temp");
+      const humEl = document.getElementById("t4-hum");
+      const windEl = document.getElementById("t4-wind");
+
+      btn4.disabled = true;
+      const originalText = btn4.textContent;
+      btn4.textContent = "Checking…";
+      if (t4err) t4err.textContent = "";
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`Weather API error: ${res.status}`);
+        const data = await res.json();
+        if (tempEl) tempEl.textContent = `${data.main?.temp ?? "N/A"} °C`;
+        if (humEl) humEl.textContent  = `${data.main?.humidity ?? "N/A"}%`;
+        if (windEl) windEl.textContent = `${data.wind?.speed ?? "N/A"} m/s`;
+      } catch (err) {
+        console.error("Weather fetch error:", err);
+        if (t4err) t4err.textContent = "Could not load weather. Check console and your API key.";
+        if (tempEl) tempEl.textContent = "—";
+        if (humEl) humEl.textContent = "—";
+        if (windEl) windEl.textContent = "—";
+      } finally {
+        btn4.disabled = false;
+        btn4.textContent = originalText;
+      }
+    });
+  } else {
+    console.warn("t4-loadWx not found");
+  }
+});

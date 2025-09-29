@@ -79,8 +79,24 @@ Use:
 data.content   // the quote text
 data.author    // the author
 */
- 
+const btn3 = document.getElementById("t3-loadQuote");
+if (btn3) {
+  btn3.addEventListener("click", async function () {
+    try {
+      const res = await fetch("https://dummyjson.com/quotes/random");
+      const data = await res.json();
 
+      const quote = document.getElementById("t3-quote");
+      const author = document.getElementById("t3-author");
+
+      if (quote) quote.innerHTML = `"${data.quote || data.content}"`;
+      if (author) author.innerHTML = `— ${data.author}`;
+    } catch (err) {
+      console.error("Error fetching quote:", err);
+    }
+  });
+}
+    
 /*  
 =======================================
 TODO4: Dammam Weather Now
